@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YourProducts - Online Store</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: #fff;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #0066cc;
+        }
+        
+        .cart-icon {
+            margin-left: 30px;
+        }
+        
+        /* Hero section */
+        .hero {
+            background-color: #f0f0f0;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+        
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #666;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #0066cc;
+            color: white;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #0055aa;
+        }
+        
+        /* Features section */
+        .features {
+            padding: 60px 0;
+            text-align: center;
+            background-color: #fff;
+        }
+        
+        .section-title {
+            margin-bottom: 40px;
+            font-size: 1.8rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-box {
+            padding: 20px;
+        }
+        
+        .feature-box h3 {
+            margin: 15px 0 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* Products section */
+        .products {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-img {
+            height: 200px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: #0066cc;
+            margin-bottom: 15px;
+        }
+        
+        .add-to-cart {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: #333;
+            color: white;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #0066cc;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a:hover {
+            color: #0066cc;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        .payment-methods {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .payment-methods img {
+            height: 30px;
+            filter: brightness(0) invert(1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">YOURPRODUCTS</div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="products.html">PRODUCTS</a></li>
+<li class="cart-icon"><a href="cart.html">CART (<span class="cart-count">0</span>)</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>YOURPRODUCTS<br>ARE GREAT.</h1>
+                <p>Connectetur adipi elit lorem ipsum<br>
+                Dolor sit amet exem ipsu moons</p>
+                <a href="products.html" class="btn">SHOP PRODUCT</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-box">
+                    <h3>FREE DELIVERY</h3>
+                    <p>Consectetur adipi elit lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>QUALITY GUARANTEE</h3>
+                    <p>Dolor sit amet orem ipsu moons ectetur adipi elit.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>DAILY OFFERS</h3>
+                    <p>Amet consectetur adipi elit loreme ipsum dolor sit.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>100% SECURE PAYMENT</h3>
+                    <p>Rem Lopsum dolor sit amet, consectetur adipi elit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+   
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Store</h3>
+                    <p>Nisi, purus vitae, ultrices nunc. Sit ac sit suscipit hendrerit.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>QUICK LINKS</h3>
+                    <ul>
+                        <li><a href="https://api.whatsapp.com/send?phone=573028464802&text=¡Hey! quiero màs información.">Contacto Whatsapp</a></li
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>HELP & INFO</h3>
+                    <ul>
+                        <li><a href="#">TRACK YOUR ORDER</a></li>
+                        <li><a href="#">RETURNS POLICIES</a></li>
+                        <li><a href="#">SHIPPING+DELIVERY</a></li>
+                        <li><a href="#">CONTACT US</a></li>
+                        <li><a href="#">FAQS</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Genny Canas 2025</p>
+
+            </div>
+        </div>
+    </footer>
+    <script src="js/cart.js"></script>
+<script>
+    // Initialize cart count on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        updateCartCount();
+    });
+</script>
+</body>
+</html>

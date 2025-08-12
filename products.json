@@ -1,0 +1,100 @@
+{
+  "products": [
+    {
+      "id": "iphone15promax",
+      "name": "iPhone 15 Pro Max",
+      "price": 1199,
+      "image": "iphone15-pro-max.jpg"
+    },
+    {
+      "id": "iphone15pro",
+      "name": "iPhone 15 Pro",
+      "price": 999,
+      "image": "iphone15-pro.jpg"
+    },
+    {
+      "id": "iphone15plus",
+      "name": "iPhone 15 Plus",
+      "price": 899,
+      "image": "iphone15-plus.jpg"
+    },
+    {
+      "id": "iphone15",
+      "name": "iPhone 15",
+      "price": 799,
+      "image": "iphone15.jpg"
+    },
+    {
+      "id": "iphone14promax",
+      "name": "iPhone 14 Pro Max",
+      "price": 1099,
+      "image": "iphone14-pro-max.jpg"
+    },
+    {
+      "id": "iphone14pro",
+      "name": "iPhone 14 Pro",
+      "price": 999,
+      "image": "iphone14-pro.jpg"
+    },
+    {
+      "id": "iphone14plus",
+      "name": "iPhone 14 Plus",
+      "price": 899,
+      "image": "iphone14-plus.jpg"
+    },
+    {
+      "id": "iphone14",
+      "name": "iPhone 14",
+      "price": 799,
+      "image": "iphone14.jpg"
+    },
+    {
+            "id": "s25ultra",
+      "name": "Galaxy S25 Ultra",
+      "price": 1399,
+      "image": "s25-ultra.jpg"
+    },
+    {
+      "id": "s25plus",
+      "name": "Galaxy S25+",
+      "price": 1099,
+      "image": "s25-plus.jpg"
+    },
+    {
+      "id": "s25",
+      "name": "Galaxy S25",
+      "price": 899,
+      "image": "s25.jpg"
+    },
+    {
+      "id": "zfold6",
+      "name": "Galaxy Z Fold 6",
+      "price": 1899,
+      "image": "z-fold6.jpg"
+    },
+    {
+      "id": "zflip6",
+      "name": "Galaxy Z Flip 6",
+      "price": 1099,
+      "image": "z-flip6.jpg"
+    },
+    {
+      "id": "s24ultra",
+      "name": "Galaxy S24 Ultra",
+      "price": 1299,
+      "image": "s24-ultra.jpg"
+    },
+    {
+      "id": "s24plus",
+      "name": "Galaxy S24+",
+      "price": 999,
+      "image": "s24-plus.jpg"
+    },
+    {
+      "id": "s24",
+      "name": "Galaxy S24",
+      "price": 799,
+      "image": "s24.jpg"
+    }
+  ]
+}

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - YourProducts</title>
+    <style>
+        /* Reusing the same styles from index.html for consistency */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: #fff;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #0066cc;
+        }
+        
+        .cart-icon {
+            margin-left: 30px;
+        }
+        
+        /* Products page styles */
+        .products-page {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .category-title {
+            font-size: 1.5rem;
+            margin: 60px 0 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-img {
+            height: 200px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: #0066cc;
+            margin-bottom: 15px;
+        }
+        
+        .add-to-cart {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: #333;
+            color: white;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+            width: 100%;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #0066cc;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a:hover {
+            color: #0066cc;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+    </style>
+    <script>
+    // This will help us track which product is being added
+const productIds = {
+    "iPhone 15 Pro Max": "iphone15promax",
+    "iPhone 15 Pro": "iphone15pro",
+    "iPhone 15 Plus": "iphone15plus",
+    "iPhone 15": "iphone15",
+    "iPhone 14 Pro Max": "iphone14promax",
+    "iPhone 14 Pro": "iphone14pro",
+    "iPhone 14 Plus": "iphone14plus",
+    "iPhone 14": "iphone14",
+    // Galaxy S25 Series (2025 Flagships)
+    "Galaxy S25 Ultra": "s25ultra",
+    "Galaxy S25+": "s25plus", 
+    "Galaxy S25": "s25",
+    
+    // Galaxy Foldables (2025)
+    "Galaxy Z Fold 6": "zfold6",
+    "Galaxy Z Flip 6": "zflip6",
+    
+    // Previous Gen (2024)
+    "Galaxy S24 Ultra": "s24ultra",
+    "Galaxy S24+": "s24plus",
+    "Galaxy S24": "s24"
+};
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">YOURPRODUCTS</div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="products.html">PRODUCTS</a></li>
+<li class="cart-icon"><a href="cart.html">CART (<span class="cart-count">0</span>)</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+ <main class="products-page">
+    <div class="container">
+        <h1 class="section-title">Our Products</h1>
+        
+        <!-- iPhone Section -->
+        <h2 class="category-title">LATEST IPHONE MODELS</h2>
+        <div class="products-grid">
+            <!-- iPhone 15 Pro Max -->
+            <div class="product-card">
+                <div class="product-img"><img src="images/iphone15promax.png" alt="Imagen de ejemplo" style="height:70%;"></div>
+                <div class="product-info">
+                    <h3 class="product-title">iPhone 15 Pro Max</h3>
+                    <div class="product-price">$1,199</div>
+                    <button class="add-to-cart" onclick="addToCart('iphone15promax')">ADD TO CART</button>
+                </div>
+            </div>
+            
+            <!-- iPhone 15 Pro -->
+            <div class="product-card">
+                <div class="product-img">                
+                    <img src="images/iphone15pro.png" alt="Imagen de ejemplo" style="height:70%;">
+                    </div>
+                <div class="product-info">
+                    <h3 class="product-title">iPhone 15 Pro</h3>
+                    <div class="product-price">$999</div>
+                    <button class="add-to-cart" onclick="addToCart('iphone15pro')">ADD TO CART</button>
+                </div>
+            </div>
+            
+            <!-- iPhone 15 Plus -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="images/iphone15plus.png" alt="Imagen de ejemplo" style="height:70%;">
+                    </div>
+                <div class="product-info">
+                    <h3 class="product-title">iPhone 15 Plus</h3>
+                    <div class="product-price">$899</div>
+                    <button class="add-to-cart" onclick="addToCart('iphone15plus')">ADD TO CART</button>
+                </div>
+            </div>
+            
+            <!-- iPhone 15 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="images/iphone15.png" alt="Imagen de ejemplo" style="height:70%;">
+                    </div>
+                <div class="product-info">
+                    <h3 class="product-title">iPhone 15</h3>
+                    <div class="product-price">$799</div>
+                    <button class="add-to-cart" onclick="addToCart('iphone15')">ADD TO CART</button>
+                </div>
+            </div>
+            
+            <!-- iPhone 14 Pro Max -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="images/iphone14promax.png" alt="Imagen de ejemplo" style="height:70%;">
+                    </div>
+                <div class="product-info">
+                    <h3 class="product-title">iPhone 14 Pro Max</h3>
+                    <div class="product-price">$1,099</div>
+                    <button class="add-to-cart" onclick="addToCart('iphone14promax')">ADD TO CART</button>
+                </div>
+            </div>
+            
+            <!-- iPhone 14 Pro -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="images/iphone14pro.png" alt="Imagen de ejemplo" style="height:70%;">
+                    </div>
+                <div class="product-info">
+                    <h3 class="product-title">iPhone 14 Pro</h3>
+                    <div class="product-price">$999</div>
+                    <button class="add-to-cart" onclick="addToCart('iphone14pro')">ADD TO CART</button>
+                </div>
+            </div>
+            
+            <!-- iPhone 14 Plus -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="images/iphone14plus.png" alt="Imagen de ejemplo" style="height:70%;">
+                    </div>
+                <div class="product-info">
+                    <h3 class="product-title">iPhone 14 Plus</h3>
+                    <div class="product-price">$899</div>
+                    <button class="add-to-cart" onclick="addToCart('iphone14plus')">ADD TO CART</button>
+                </div>
+            </div>
+            
+            <!-- iPhone 14 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="images/iphone14.png" alt="Imagen de ejemplo" style="height:70%;">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">iPhone 14</h3>
+                    <div class="product-price">$799</div>
+                    <button class="add-to-cart" onclick="addToCart('iphone14')">ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Samsung Section -->
+       <h2 class="category-title">LATEST SAMSUNG MODELS</h2>
+<div class="products-grid">
+    <!-- Samsung Galaxy S25 Ultra -->
+    <div class="product-card">
+        <div class="product-img">
+            <img src="images/s25ultra.png" alt="Samsung Galaxy S25 Ultra"  style="height:70%;">
+        </div>
+        <div class="product-info">
+            <h3 class="product-title">Galaxy S25 Ultra</h3>
+            <div class="product-price">$1,399</div>
+            <button class="add-to-cart" onclick="addToCart('s25ultra')">ADD TO CART</button>
+        </div>
+    </div>
+    
+    <!-- Samsung Galaxy S25+ -->
+    <div class="product-card">
+        <div class="product-img">
+            <img src="images/s25plus.png" alt="Samsung Galaxy S25+"  style="height:70%;">
+        </div>
+        <div class="product-info">
+            <h3 class="product-title">Galaxy S25+</h3>
+            <div class="product-price">$1,099</div>
+            <button class="add-to-cart" onclick="addToCart('s25plus')">ADD TO CART</button>
+        </div>
+    </div>
+    
+    <!-- Samsung Galaxy S25 -->
+    <div class="product-card">
+        <div class="product-img">
+            <img src="images/s25.png" alt="Samsung Galaxy S25"  style="height:70%;">
+        </div>
+        <div class="product-info">
+            <h3 class="product-title">Galaxy S25</h3>
+            <div class="product-price">$899</div>
+            <button class="add-to-cart" onclick="addToCart('s25')">ADD TO CART</button>
+        </div>
+    </div>
+    
+    <!-- Samsung Galaxy Z Fold 6 -->
+    <div class="product-card">
+        <div class="product-img">
+            <img src="images/zfold6.png" alt="Samsung Galaxy Z Fold 6"  style="height:70%;">
+        </div>
+        <div class="product-info">
+            <h3 class="product-title">Galaxy Z Fold 6</h3>
+            <div class="product-price">$1,899</div>
+            <button class="add-to-cart" onclick="addToCart('zfold6')">ADD TO CART</button>
+        </div>
+    </div>
+    
+    <!-- Samsung Galaxy Z Flip 6 -->
+    <div class="product-card">
+        <div class="product-img">
+            <img src="images/zflip6.png" alt="Samsung Galaxy Z Flip 6"  style="height:70%;">
+        </div>
+        <div class="product-info">
+            <h3 class="product-title">Galaxy Z Flip 6</h3>
+            <div class="product-price">$1,099</div>
+            <button class="add-to-cart" onclick="addToCart('zflip6')">ADD TO CART</button>
+        </div>
+    </div>
+    
+    <!-- Samsung Galaxy S24 Ultra (Previous Flagship) -->
+    <div class="product-card">
+        <div class="product-img">
+            <img src="images/s24ultra.png" alt="Samsung Galaxy S24 Ultra"  style="height:70%;">
+        </div>
+        <div class="product-info">
+            <h3 class="product-title">Galaxy S24 Ultra</h3>
+            <div class="product-price">$1,099</div>
+            <button class="add-to-cart" onclick="addToCart('s24ultra')">ADD TO CART</button>
+        </div>
+    </div>
+    
+    <!-- Samsung Galaxy S24+ (Previous Flagship) -->
+    <div class="product-card">
+        <div class="product-img">
+            <img src="images/s24plus.png" alt="Samsung Galaxy S24+"  style="height:70%;">
+        </div> 
+        <div class="product-info">
+            <h3 class="product-title">Galaxy S24+</h3>
+            <div class="product-price">$999</div>
+            <button class="add-to-cart" onclick="addToCart('s24plus')">ADD TO CART</button>
+        </div>
+    </div>
+    
+    <!-- Samsung Galaxy S24 (Previous Flagship) -->
+    <div class="product-card">
+        <div class="product-img">
+            <img src="images/s24.png" alt="Samsung Galaxy S24"  style="height:70%;">
+        </div>
+        <div class="product-info">
+            <h3 class="product-title">Galaxy S24</h3>
+            <div class="product-price">$799</div>
+            <button class="add-to-cart" onclick="addToCart('s24')">ADD TO CART</button>
+        </div>
+    </div>
+</div>
+</main>   
+    <script src="js/cart.js"></script>
+<script>
+    // Initialize cart count on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        updateCartCount();
+    });
+</script>
+       
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Store</h3>
+                    <p>Nisi, purus vitae, ultrices nunc. Sit ac sit suscipit hendrerit.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>QUICK LINKS</h3>
+                    <ul>
+                        <li><a href="https://api.whatsapp.com/send?phone=573028464802&text=¡Hey! quiero màs información.">Contacto Whatsapp</a></li
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>HELP & INFO</h3>
+                    <ul>
+                        <li><a href="#">TRACK YOUR ORDER</a></li>
+                        <li><a href="#">RETURNS POLICIES</a></li>
+                        <li><a href="#">SHIPPING+DELIVERY</a></li>
+                        <li><a href="#">CONTACT US</a></li>
+                        <li><a href="#">FAQS</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Genny Canas 2025</p>
+
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
